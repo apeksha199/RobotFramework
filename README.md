@@ -45,6 +45,8 @@ $ sudo pip install --upgrade pip
 
 # Running the project
 
+1. Go to *master* branch
+
 1. Clone the project
 
 ```git clone https://github.com/apeksha199/RobotFramework.git```
@@ -54,6 +56,8 @@ $ sudo pip install --upgrade pip
 ```pip install -r requirements.txt```
 
 ## Run FE automation
+
+1. Go to project directory
 
 ```robot FE_Automation/<filename>.robot```
 
