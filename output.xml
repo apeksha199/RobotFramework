@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.0 on darwin)" generated="20211120 12:02:26.396" rpa="false" schemaversion="2">
+<suite id="s1" name="File Download" source="/Users/apeman/Documents/Workspace/RobotFramework/FE_Automation/file_download.robot">
+<test id="s1-t1" name="Test Downloading files">
+<kw name="Get Time" library="BuiltIn">
+<var>${now}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20211120 12:02:26.491" level="INFO">${now} = 1637406146</msg>
+<status status="PASS" starttime="20211120 12:02:26.491" endtime="20211120 12:02:26.491"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${download directory}</var>
+<arg>${OUTPUT DIR}</arg>
+<arg>downloads_${now}</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20211120 12:02:26.491" level="INFO">${download directory} = /Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146</msg>
+<status status="PASS" starttime="20211120 12:02:26.491" endtime="20211120 12:02:26.491"/>
+</kw>
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${download directory}</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20211120 12:02:26.491" level="INFO" html="true">Created directory '&lt;a href="file:///Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146"&gt;/Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20211120 12:02:26.491" endtime="20211120 12:02:26.491"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${chrome options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211120 12:02:26.492" level="INFO">${chrome options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10fcf67d0&gt;</msg>
+<status status="PASS" starttime="20211120 12:02:26.491" endtime="20211120 12:02:26.492"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${disabled}</var>
+<arg>Chrome PDF Viewer</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20211120 12:02:26.492" level="INFO">${disabled} = ['Chrome PDF Viewer']</msg>
+<status status="PASS" starttime="20211120 12:02:26.492" endtime="20211120 12:02:26.492"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${prefs}</var>
+<arg>download.default_directory=${download directory}</arg>
+<arg>plugins.plugins_disabled=${disabled}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211120 12:02:26.492" level="INFO">${prefs} = {'download.default_directory': '/Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146', 'plugins.plugins_disabled': ['Chrome PDF Viewer']}</msg>
+<status status="PASS" starttime="20211120 12:02:26.492" endtime="20211120 12:02:26.492"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20211120 12:02:26.492" endtime="20211120 12:02:26.492"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20211120 12:02:26.493" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20211120 12:02:26.493" endtime="20211120 12:02:30.165"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${MAIN_PAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211120 12:02:30.166" level="INFO">Opening url 'https://the-internet.herokuapp.com/jqueryui/menu#'</msg>
+<status status="PASS" starttime="20211120 12:02:30.166" endtime="20211120 12:02:31.968"/>
+</kw>
+<kw name="Click on dowloads">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${ENABLED}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211120 12:02:31.969" level="INFO">Clicking link '//a[contains(text(),'Enabled')]'.</msg>
+<status status="PASS" starttime="20211120 12:02:31.968" endtime="20211120 12:02:32.131"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${DOWNLOADS}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211120 12:02:32.131" endtime="20211120 12:02:32.412"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${DOWNLOADS}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211120 12:02:32.412" level="INFO">Clicking link '//a[contains(text(),'Downloads')]'.</msg>
+<status status="PASS" starttime="20211120 12:02:32.412" endtime="20211120 12:02:32.451"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${PDF}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211120 12:02:32.451" endtime="20211120 12:02:32.939"/>
+</kw>
+<status status="PASS" starttime="20211120 12:02:31.968" endtime="20211120 12:02:32.940"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${PDF}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211120 12:02:32.940" level="INFO">Clicking link '//a[contains(text(),'PDF')]'.</msg>
+<status status="PASS" starttime="20211120 12:02:32.940" endtime="20211120 12:02:33.216"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<var>${file1}</var>
+<arg>1 min</arg>
+<arg>2 sec</arg>
+<arg>Download should be done</arg>
+<arg>${download directory}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Download should be done">
+<arg>${download directory}</arg>
+<doc>Verifies that the directory has only one folder and it is not a temp file.</doc>
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${files}</var>
+<arg>${directory}</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20211120 12:02:33.218" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146"&gt;/Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146&lt;/a&gt;'.</msg>
+<msg timestamp="20211120 12:02:33.218" level="INFO">0 files:
+</msg>
+<msg timestamp="20211120 12:02:33.218" level="INFO">${files} = []</msg>
+<status status="PASS" starttime="20211120 12:02:33.218" endtime="20211120 12:02:33.218"/>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<arg>${files}</arg>
+<arg>1</arg>
+<arg>Should be only one file in the download folder</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<msg timestamp="20211120 12:02:33.219" level="INFO">Length is 0</msg>
+<msg timestamp="20211120 12:02:33.220" level="FAIL">Should be only one file in the download folder</msg>
+<status status="FAIL" starttime="20211120 12:02:33.218" endtime="20211120 12:02:33.220"/>
+</kw>
+<kw name="Should Not Match Regexp" library="BuiltIn">
+<arg>${files[0]}</arg>
+<arg>(?i).*\\.tmp</arg>
+<arg>Chrome is still downloading a file</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" starttime="20211120 12:02:33.220" endtime="20211120 12:02:33.220"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${file}</var>
+<arg>${directory}</arg>
+<arg>${files[0]}</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<status status="NOT RUN" starttime="20211120 12:02:33.220" endtime="20211120 12:02:33.220"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>File was successfully downloaded to ${file}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20211120 12:02:33.220" endtime="20211120 12:02:33.220"/>
+</kw>
+<status status="FAIL" starttime="20211120 12:02:33.217" endtime="20211120 12:02:33.221"/>
+</kw>
+<kw name="Download should be done">
+<arg>${download directory}</arg>
+<doc>Verifies that the directory has only one folder and it is not a temp file.</doc>
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${files}</var>
+<arg>${directory}</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20211120 12:02:35.224" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146"&gt;/Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146&lt;/a&gt;'.</msg>
+<msg timestamp="20211120 12:02:35.224" level="INFO">1 file:
+menu.pdf</msg>
+<msg timestamp="20211120 12:02:35.225" level="INFO">${files} = ['menu.pdf']</msg>
+<status status="PASS" starttime="20211120 12:02:35.223" endtime="20211120 12:02:35.225"/>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<arg>${files}</arg>
+<arg>1</arg>
+<arg>Should be only one file in the download folder</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<msg timestamp="20211120 12:02:35.225" level="INFO">Length is 1</msg>
+<status status="PASS" starttime="20211120 12:02:35.225" endtime="20211120 12:02:35.225"/>
+</kw>
+<kw name="Should Not Match Regexp" library="BuiltIn">
+<arg>${files[0]}</arg>
+<arg>(?i).*\\.tmp</arg>
+<arg>Chrome is still downloading a file</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20211120 12:02:35.226" endtime="20211120 12:02:35.227"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${file}</var>
+<arg>${directory}</arg>
+<arg>${files[0]}</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<msg timestamp="20211120 12:02:35.229" level="INFO">${file} = /Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146/menu.pdf</msg>
+<status status="PASS" starttime="20211120 12:02:35.228" endtime="20211120 12:02:35.229"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>File was successfully downloaded to ${file}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211120 12:02:35.229" level="INFO">File was successfully downloaded to /Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146/menu.pdf</msg>
+<status status="PASS" starttime="20211120 12:02:35.229" endtime="20211120 12:02:35.230"/>
+</kw>
+<status status="PASS" starttime="20211120 12:02:35.222" endtime="20211120 12:02:35.230"/>
+</kw>
+<msg timestamp="20211120 12:02:35.230" level="INFO">${file1} = /Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146/menu.pdf</msg>
+<status status="PASS" starttime="20211120 12:02:33.217" endtime="20211120 12:02:35.230"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${file1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20211120 12:02:35.230" endtime="20211120 12:02:35.231"/>
+</kw>
+<kw name="Click on dowloads">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${ENABLED}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211120 12:02:35.232" level="INFO">Clicking link '//a[contains(text(),'Enabled')]'.</msg>
+<status status="PASS" starttime="20211120 12:02:35.231" endtime="20211120 12:02:35.278"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${DOWNLOADS}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211120 12:02:35.278" endtime="20211120 12:02:35.762"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${DOWNLOADS}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211120 12:02:35.762" level="INFO">Clicking link '//a[contains(text(),'Downloads')]'.</msg>
+<status status="PASS" starttime="20211120 12:02:35.762" endtime="20211120 12:02:35.799"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${PDF}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211120 12:02:35.799" endtime="20211120 12:02:36.268"/>
+</kw>
+<status status="PASS" starttime="20211120 12:02:35.231" endtime="20211120 12:02:36.268"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${CSV}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211120 12:02:36.268" level="INFO">Clicking link '//a[contains(text(),'CSV')]'.</msg>
+<status status="PASS" starttime="20211120 12:02:36.268" endtime="20211120 12:02:36.463"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<var>${file2}</var>
+<arg>1 min</arg>
+<arg>10 sec</arg>
+<arg>Download should be done</arg>
+<arg>${download directory}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Download should be done">
+<arg>${download directory}</arg>
+<doc>Verifies that the directory has only one folder and it is not a temp file.</doc>
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${files}</var>
+<arg>${directory}</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20211120 12:02:36.466" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146"&gt;/Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146&lt;/a&gt;'.</msg>
+<msg timestamp="20211120 12:02:36.466" level="INFO">2 files:
+menu.csv.crdownload
+menu.pdf</msg>
+<msg timestamp="20211120 12:02:36.466" level="INFO">${files} = ['menu.csv.crdownload', 'menu.pdf']</msg>
+<status status="PASS" starttime="20211120 12:02:36.464" endtime="20211120 12:02:36.466"/>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<arg>${files}</arg>
+<arg>1</arg>
+<arg>Should be only one file in the download folder</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<msg timestamp="20211120 12:02:36.467" level="INFO">Length is 2</msg>
+<msg timestamp="20211120 12:02:36.467" level="FAIL">Should be only one file in the download folder</msg>
+<status status="FAIL" starttime="20211120 12:02:36.466" endtime="20211120 12:02:36.467"/>
+</kw>
+<kw name="Should Not Match Regexp" library="BuiltIn">
+<arg>${files[0]}</arg>
+<arg>(?i).*\\.tmp</arg>
+<arg>Chrome is still downloading a file</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" starttime="20211120 12:02:36.467" endtime="20211120 12:02:36.467"/>
+</kw>
+<kw name="Join Path" library="OperatingSystem">
+<var>${file}</var>
+<arg>${directory}</arg>
+<arg>${files[0]}</arg>
+<doc>Joins the given path part(s) to the given base path.</doc>
+<status status="NOT RUN" starttime="20211120 12:02:36.467" endtime="20211120 12:02:36.467"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>File was successfully downloaded to ${file}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20211120 12:02:36.468" endtime="20211120 12:02:36.468"/>
+</kw>
+<status status="FAIL" starttime="20211120 12:02:36.463" endtime="20211120 12:02:36.468"/>
+</kw>
+<kw name="Download should be done">
+<arg>${download directory}</arg>
+<doc>Verifies that the directory has only one folder and it is not a temp file.</doc>
+<kw name="List Files In Directory" library="OperatingSystem">
+<var>${files}</var>
+<arg>${directory}</arg>
+<doc>Wrapper for `List Directory` that returns only files.</doc>
+<msg timestamp="20211120 12:02:46.474" level="INFO" html="true">Listing contents of directory '&lt;a href="file:///Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146"&gt;/Users/apeman/Documents/Workspace/RobotFramework/downloads_1637406146&lt;/a&gt;'.</msg>
+<msg timestamp="20211120 12:02:46.475" level="INFO">2 files:
+menu.csv
+menu.pdf</msg>
+<msg timestamp="20211120 12:02:46.475" level="INFO">${files} = ['menu.csv', 'menu.pdf']</msg>
+<status status="PASS" starttime="20211120 12:02:46.472" endtime="20211120 12:02:46.475"/>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<arg>${files}</arg>
+<arg>1</arg>
+<arg>Should be only one file in the download folder</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<msg timestamp="20211120 12:02:46.477" level="INFO">Length is 2</msg>
